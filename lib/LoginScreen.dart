@@ -18,7 +18,7 @@ class LoginScreen extends StatelessWidget {
           children: [
             TextField(
               decoration: InputDecoration(
-                labelText: 'Username',
+                labelText: '아이디',
                 border: OutlineInputBorder(),
               ),
             ),
@@ -26,16 +26,28 @@ class LoginScreen extends StatelessWidget {
             TextField(
               obscureText: true,
               decoration: InputDecoration(
-                labelText: 'Password',
+                labelText: '비밀번호',
                 border: OutlineInputBorder(),
               ),
             ),
             SizedBox(height: 32.0),
-            ElevatedButton(
-              onPressed: () {
-                // Add your login logic here
-              },
-              child: Text('Login'),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    // Add your signup logic here
+                  },
+                  child: Text('회원가입'),
+                ),
+                SizedBox(width: 16.0), // 버튼 사이의 공간
+                ElevatedButton(
+                  onPressed: () {
+                    // Add your login logic here
+                  },
+                  child: Text('로그인'),
+                ),
+              ],
             ),
           ],
         ),
