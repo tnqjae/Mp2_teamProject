@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'SignUpScreen.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -18,7 +19,7 @@ class LoginScreen extends StatelessWidget {
           children: [
             TextField(
               decoration: InputDecoration(
-                labelText: '아이디',
+                labelText: 'Username',
                 border: OutlineInputBorder(),
               ),
             ),
@@ -26,7 +27,7 @@ class LoginScreen extends StatelessWidget {
             TextField(
               obscureText: true,
               decoration: InputDecoration(
-                labelText: '비밀번호',
+                labelText: 'Password',
                 border: OutlineInputBorder(),
               ),
             ),
@@ -36,16 +37,19 @@ class LoginScreen extends StatelessWidget {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    // Add your signup logic here
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SignUpScreen()),
+                    );
                   },
-                  child: Text('회원가입'),
+                  child: Text('Sign Up'),
                 ),
-                SizedBox(width: 16.0), // 버튼 사이의 공간
+                SizedBox(width: 16.0),
                 ElevatedButton(
                   onPressed: () {
                     // Add your login logic here
                   },
-                  child: Text('로그인'),
+                  child: Text('Login'),
                 ),
               ],
             ),
