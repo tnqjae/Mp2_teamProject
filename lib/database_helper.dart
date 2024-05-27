@@ -16,6 +16,7 @@ class DatabaseHelper {
 
   _initDatabase() async {
     String path = join(await getDatabasesPath(), 'app_database.db');
+    print('Database path: $path'); // 데이터베이스 경로 출력
     return await openDatabase(
       path,
       version: 1,
@@ -37,5 +38,10 @@ class DatabaseHelper {
   Future<int> insertUser(Map<String, dynamic> row) async {
     Database db = await database;
     return await db.insert('users', row);
+  }
+
+  Future<List<Map<String, dynamic>>> queryAllUsers() async {
+    Database db = await database;
+    return await db.query('users');
   }
 }

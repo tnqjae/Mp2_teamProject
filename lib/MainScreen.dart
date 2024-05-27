@@ -20,7 +20,7 @@ class MainScreen extends StatelessWidget {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue,
-                  padding: EdgeInsets.symmetric(vertical: 30),
+                  padding: EdgeInsets.symmetric(vertical: 40),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.zero,
                   ),
@@ -40,7 +40,7 @@ class MainScreen extends StatelessWidget {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green,
-                  padding: EdgeInsets.symmetric(vertical: 30),
+                  padding: EdgeInsets.symmetric(vertical: 40),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.zero,
                   ),
@@ -59,10 +59,4 @@ class MainScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-void main() {
-  runApp(MaterialApp(
-    home: MainScreen(),
-  ));
 }
