@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'LoginScreen.dart';
-import 'SignUpScreen.dart';
+import '../AboutLogin/LoginScreen.dart';
+import '../AboutLogin/SignUpScreen.dart';
 
 class MainScreen extends StatelessWidget {
   @override

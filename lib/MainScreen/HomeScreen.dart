@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../User/UserInfoDisplayScreen.dart';
 
 class HomeScreen extends StatelessWidget {
   final String username;
@@ -9,7 +10,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
+        title: Text('Weltrack-Main'),
       ),
       body: Column(
         children: [
@@ -31,10 +32,11 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      //Navigator.push(
-                      //context,
-                      //(builder: (context) => ),
-                      // );
+                      Navigator.push(
+                      context,
+                        MaterialPageRoute(
+                            builder: (context) => UserInfoDisplayScreen(username: username,)),
+                       );
                       },
                     child: Text(
                       '내 정보',
