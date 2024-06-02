@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'UserInfoInputScreen.dart';
 
 class HomeScreen extends StatelessWidget {
   final String username;
@@ -38,7 +37,7 @@ class HomeScreen extends StatelessWidget {
                       // );
                       },
                     child: Text(
-                      '내 정보 입력',
+                      '내 정보',
                       style: TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,

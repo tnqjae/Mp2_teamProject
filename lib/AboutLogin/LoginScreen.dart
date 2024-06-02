@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' as p;
 import 'package:sqflite/sqflite.dart';
+import 'package:weltrack/UserInfoInputScreen.dart';
 import 'SignUpScreen.dart';
 import 'HomeScreen.dart'; // 로그인 성공 후 이동할 페이지
 
@@ -27,11 +28,21 @@ class _LoginScreenState extends State<LoginScreen> {
 
     _database = await openDatabase(
       path,
-      version: 1,
-      onCreate: (db, version) {
-        return db.execute(
+      version: 2, // 버전을 2로 변경하여 데이터베이스 스키마를 업데이트합니다.
+      onCreate: (db, version) async {
+        await db.execute(
           'CREATE TABLE users(id INTEGER PRIMARY KEY, username TEXT, password TEXT)',
         );
+        await db.execute(
+          'CREATE TABLE IF NOT EXISTS userinfo(username TEXT PRIMARY KEY, height REAL, weight REAL, age INTEGER)',
+        );
+      },
+      onUpgrade: (db, oldVersion, newVersion) async {
+        if (oldVersion < 2) {
+          await db.execute(
+            'CREATE TABLE IF NOT EXISTS userinfo(username TEXT PRIMARY KEY, height REAL, weight REAL, age INTEGER)',
+          );
+        }
       },
     );
 
@@ -61,17 +72,30 @@ class _LoginScreenState extends State<LoginScreen> {
     final username = _usernameController.text;
     final password = _passwordController.text;
 
-    final List<Map<String, dynamic>> maps = await _database!.query(
+    final List<Map<String, dynamic>> userMaps = await _database!.query(
       'users',
       where: 'username = ? AND password = ?',
       whereArgs: [username, password],
     );
 
-    if (maps.isNotEmpty) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => HomeScreen(username: username)),
+    if (userMaps.isNotEmpty) {
+      final List<Map<String, dynamic>> userInfoMaps = await _database!.query(
+        'userinfo',
+        where: 'username = ?',
+        whereArgs: [username],
       );
+
+      if (userInfoMaps.isNotEmpty) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => HomeScreen(username: username)),
+        );
+      } else {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => UserInfoScreen(username: username)),
+        );
+      }
     } else {
       showDialog(
         context: context,
