@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' as p;
 import 'package:sqflite/sqflite.dart';
-import 'package:weltrack/UserInfoInputScreen.dart';
+import 'package:weltrack/User/UserInfoInputScreen.dart';
 import 'SignUpScreen.dart';
-import 'HomeScreen.dart'; // 로그인 성공 후 이동할 페이지
+import '../MainScreen/HomeScreen.dart'; // 로그인 성공 후 이동할 페이지
 
 class LoginScreen extends StatefulWidget {
   @override
