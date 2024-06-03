@@ -118,6 +118,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   void dispose() {
     _usernameController.dispose();
     _passwordController.dispose();
+
     super.dispose();
   }
 }
