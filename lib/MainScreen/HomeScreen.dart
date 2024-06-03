@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../User/UserInfoDisplayScreen.dart';
+import '../calendar/calendar.dart';
 
 class HomeScreen extends StatelessWidget {
   final String username;
@@ -69,7 +70,13 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => CalendarPage()),
+                      );
+                    },
                     child: Text(
                       '달력',
                       style: TextStyle(
