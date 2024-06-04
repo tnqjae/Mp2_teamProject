@@ -118,7 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'WelTrack',
+          'ActiveLife+',
           style: TextStyle(fontSize: 30),
         ),
         backgroundColor: Color(0xFFABCDED),
