@@ -29,9 +29,9 @@ class _KcalCalculatorState extends State<KcalCalculator> {
   Future<void> _loadFoodList() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     final foodListData = prefs.getString('foodList');
-    final savedDate = prefs.getString('savedDate');
+    final savedDate = prefs.getString('savedDate'); //데이터가 저장되는 날짜 저장
 
-    if (foodListData != null && savedDate != null) {
+    if (foodListData != null && savedDate != null) { //데이터가 저장되는 날짜와 현재 날짜가 다르면 데이터 삭제
       final List<dynamic> parsedFoodList = json.decode(foodListData);
       final DateTime savedDateTime = DateTime.parse(savedDate);
       final DateTime now = DateTime.now();
@@ -52,7 +52,7 @@ class _KcalCalculatorState extends State<KcalCalculator> {
     }
   }
 
-  Future<void> _saveFoodList() async {
+  Future<void> _saveFoodList() async { //SharedPreferences를 통해서 로컬에 정보 저장
     SharedPreferences prefs = await SharedPreferences.getInstance();
     final List<Map<String, dynamic>> foodListData =
     _foodList.map((food) => {'name': food.name, 'calories': food.calories}).toList();
@@ -62,12 +62,12 @@ class _KcalCalculatorState extends State<KcalCalculator> {
     await prefs.setString('savedDate', DateTime.now().toIso8601String());
   }
 
-  void _addFood(String name, int calories) {
+  void _addFood(String name, int calories) { //음식 추가 시, 화면에 추가
     setState(() {
       _foodList.add(FoodItem(name, calories));
       _saveFoodList();
     });
-    _foodNameController.clear();
+    _foodNameController.clear();//텍스트 필드 초기화
     _caloriesController.clear();
   }
 
@@ -79,7 +79,7 @@ class _KcalCalculatorState extends State<KcalCalculator> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('음식 칼로리 추적기'),
+        title: Text('먹은 칼로리'),
       ),
       body: Column(
         children: [
