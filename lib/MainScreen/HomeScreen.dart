@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../User/UserInfoDisplayScreen.dart';
 import '../calendar/calendar.dart';
 import '../KcalCalculator.dart';
+import '../Exercise.dart';
+
 class HomeScreen extends StatelessWidget {
   final String username;
 
@@ -98,7 +100,13 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ExerciseCalculator()),
+                      );
+                    },
                     child: Text(
                       '운동 입력',
                       style: TextStyle(
